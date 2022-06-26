@@ -59,7 +59,7 @@
 
             Console.WriteLine("Игра закончена!");
 
-            bool isWin(char[][] field, char player)
+            bool isWin(char[,] field, char player)
             {
                 int rowCount = 0;
                 int columnCount = 0;
@@ -69,19 +69,19 @@
                 {
                     for (int j = 0; j < SIZE; j++)
                     {
-                        if (field[i][j] == player)
+                        if (field[i,j] == player)
                         {
                             rowCount++;
                         }
-                        if (field[j][i] == player)
+                        if (field[j,i] == player)
                         {
                             columnCount++;
                         }
-                        if (i == j && field[i][j] == player)
+                        if (i == j && field[i,j] == player)
                         {
                             diagonalCount++;
                         }
-                        if (field[SIZE - i - 1][j] == player)
+                        if (field[SIZE - i - 1,j] == player)
                         {
                             reverseDiagonalCount++;
                         }
