@@ -9,12 +9,12 @@
 
         void main(string[] args)
         {
-            char[,] field = new char[SIZE, SIZE];
+            char[][] field = new char[SIZE][]; // 
             for (int i = 0; i < SIZE; i++)
             {
                 for (int j = 0; j < SIZE; j++)
                 {
-                    field[i, j] = EMPTY;
+                    field[i] [j] = EMPTY;
                 }
             }
 
@@ -30,13 +30,13 @@
                 int r = Convert.ToInt32(parts[0]) - 1; // 2-1 = 1
                 int c = Convert.ToInt32(parts[1]) - 1; // 3-1 = 2
 
-                if (field[r, c] != EMPTY)
+                if (field[r][c] != EMPTY)
                 {
                     Console.WriteLine("Сюда ходить нельзя");
                     continue;
                 }
 
-                field[r, c] = isCrossTurn ? CROSS : ZERO;
+                field[r][c] = isCrossTurn ? CROSS : ZERO;
                 if (isWin(field, isCrossTurn ? CROSS : ZERO))
                 {
                     printField(field);
@@ -59,7 +59,7 @@
 
             Console.WriteLine("Игра закончена!");
 
-            bool isWin(char[,] field, char player)
+            bool isWin(char[][] field, char player)
             {
                 int rowCount = 0;
                 int columnCount = 0;
@@ -69,19 +69,19 @@
                 {
                     for (int j = 0; j < SIZE; j++)
                     {
-                        if (field[i,j] == player)
+                        if (field[i][j] == player)
                         {
                             rowCount++;
                         }
-                        if (field[j,i] == player)
+                        if (field[j][i] == player)
                         {
                             columnCount++;
                         }
-                        if (i == j && field[i,j] == player)
+                        if (i == j && field[i][j] == player)
                         {
                             diagonalCount++;
                         }
-                        if (field[SIZE - i - 1,j] == player)
+                        if (field[SIZE - i - 1][j] == player)
                         {
                             reverseDiagonalCount++;
                         }
